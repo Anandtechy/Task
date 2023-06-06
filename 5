@@ -1,0 +1,28 @@
+ubuntu@ip-172-31-7-184:~/circleci-hello-world-nodejs$ kubectl apply -f deployment.yaml
+deployment.apps/deployment configured
+
+
+ubuntu@ip-172-31-7-184:~/circleci-hello-world-nodejs$ kubectl apply -f service.yaml
+service/service configured
+
+
+ubuntu@ip-172-31-7-184:~/circleci-hello-world-nodejs$ minikube service --all
+|-----------|------------|-------------|--------------|
+| NAMESPACE |    NAME    | TARGET PORT |     URL      |
+|-----------|------------|-------------|--------------|
+| default   | kubernetes |             | No node port |
+|-----------|------------|-------------|--------------|
+😿  service default/kubernetes has no node port
+|-----------|---------|-------------|---------------------------|
+| NAMESPACE |  NAME   | TARGET PORT |            URL            |
+|-----------|---------|-------------|---------------------------|
+| default   | service |        5000 | http://192.168.49.2:30005 |
+|-----------|---------|-------------|---------------------------|
+🎉  Opening service default/service in default browser...
+👉  http://192.168.49.2:30005
+
+
+ubuntu@ip-172-31-7-184:~/circleci-hello-world-nodejs$ kubectl get po
+NAME                          READY   STATUS    RESTARTS   AGE
+deployment-55dc55bcc4-8rxnv   1/1     Running   0          13m
+deployment-55dc55bcc4-p8597   1/1     Running   0          13m
